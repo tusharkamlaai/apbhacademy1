@@ -38,11 +38,11 @@ const Navbar = () => {
 
     return (
         <div className='lg:mb-[104px] navbar '>
-            <nav className="fixed top-0 left-0 right-0 z-50 bg-white shadow-md flex items-center justify-between flex-wrap p-4 lg:px-[50px]">
+            <nav className="fixed z-[1000] top-0 left-0 right-0 bg-white shadow-md flex items-center justify-between flex-wrap p-4 lg:px-[50px]">
                 <div className="flex items-center flex-shrink-0 text-white mr-6">
-             <Link href='/'><button type="button" > <Image src={logo} alt="" className="lg:w-[160px] w-[130px]" /></button></Link>       
+                    <Link href='/'> <Image src={logo} alt="" className="lg:w-[160px] w-[130px]" /></Link>
                 </div>
-                <div className="block lg:hidden flex items-center gap-4">
+                <div className=" lg:hidden flex items-center gap-4">
                     <button>
                         <Link href='/language'><Image src={language} alt="Language" className="w-[25px]" /></Link>
                     </button>
@@ -116,17 +116,17 @@ const Navbar = () => {
                                     </a>
                                 </div>
                             )}
-                            <button onClick={() => router.push('/faq')} href="#responsive-header" className="block mt-4 lg:inline-block lg:mt-0 text-[#140342] hover:text-black text-[16px] mr-4">
+                            <Link href='/faq'><button className="block mt-4 lg:inline-block lg:mt-0 text-[#140342] hover:text-black text-[16px] mr-4">
                                 FAQs
-                            </button>
+                            </button></Link>
 
                         </div>
-                        <a
-                            href="#responsive-header"
+                        <Link
+                            href="/blog"
                             className="block mt-4 lg:inline-block lg:mt-0 text-[#140342] hover:text-black text-[16px]"
                         >
                             Blog
-                        </a>
+                        </Link>
                         <Link href='/auth/login'>  <button variant="outline" className="block lg:hidden mt-4 px-6 py-3  bg-purple-50 h-[3rem] ">
                             Login
                         </button></Link>

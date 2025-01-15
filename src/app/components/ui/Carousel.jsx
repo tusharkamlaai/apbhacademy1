@@ -1,13 +1,17 @@
 'use client'
 import { useEffect, useState } from "react";
+import Image from 'next/image';
+import c1 from '../../assets/MainCar/c1.jpg'
+import c2 from '../../assets/MainCar/c2.jpg'
+import c3 from '../../assets/MainCar/c3.jpg'
+
 
 const PremiumCarousel = () => {
     const images = [
-        "https://apbhacademy.com/img/banners/slider/1.jpg",
-        "https://apbhacademy.com/img/banners/slider/2.jpg",
-        "https://apbhacademy.com/img/banners/slider/3.jpg",
-    ];
-
+        c1,
+        c2,
+        c3,
+    ]
     const [currentImage, setCurrentImage] = useState(0);
 
     useEffect(() => {
@@ -26,12 +30,20 @@ const PremiumCarousel = () => {
                     className={`absolute inset-0 w-full h-full transition-opacity duration-1000 ease-in-out ${index === currentImage ? "opacity-100" : "opacity-0"
                         }`}
                 >
-                    <img
+
+                    <Image
                         src={image}
                         alt={`Carousel ${index + 1}`}
                         className="w-full h-full object-fit"
                         style={{ objectFit: "fill" }} // Ensures the image completely fills the container
                     />
+
+                    {/* <img
+                        src={image}
+                        alt={`Carousel ${index + 1}`}
+                        className="w-full h-full object-fit"
+                        style={{ objectFit: "fill" }} // Ensures the image completely fills the container
+                    /> */}
                 </div>
             ))}
         </div>
