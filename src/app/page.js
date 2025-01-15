@@ -11,7 +11,7 @@ const Home = () => {
     <>
       <Carousel />
       <Card />
-      {/* <Map /> */}
+      <Map />
       <LearningJourney />
       <Training />
     </>
