@@ -83,8 +83,8 @@ const Map = () => {
 
     return (
         <>
-            <div className='text-center mt-[7rem]'>
-                <span className='block text-gray-700 text-2xl mb-12'>Our Presence</span>
+            <div className='text-center lg:mt-[4rem] mt-[4rem]'>
+                <span className='block text-gray-700 text-2xl mb-12 font-semibold'>Our Presence</span>
             </div>
             <div className='justify-center flex py-3'>
                 <MapContainer center={[20.5937, 78.9629]} zoom={5} style={{ height: '100vh', width: '80%' }}>

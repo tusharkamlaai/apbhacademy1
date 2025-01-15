@@ -24,14 +24,14 @@ const Training = () => {
 
     return (
         <>
-            <div className='text-center mt-[7rem]'>
-                <span className='block text-gray-700 text-2xl mb-2'>Our Training</span>
+            <div className='text-center lg:mt-[4rem] mt-[2rem]'>
+                <span className='block text-gray-700 text-2xl mb-2 font-semibold'>Our Training</span>
             </div>
             <div className='mt-[50px] mb-5 prevent-select'>
                 <EmblaCarousel slides={SLIDES} options={OPTIONS} />
             </div>
-            <div className='text-center mt-[7rem]'>
-                <span className='block text-gray-700 text-3xl mb-2'>For Online Training and Certification</span>
+            <div className='text-center mt-[3rem]'>
+                <span className='block text-gray-700 text-3xl mb-2 font-semibold'>For Online Training and Certification</span>
             </div>
             <div className='text-center mt-[35px] mb-5'>
                 <Button variant="outline" className="w-[15rem] bg-purple-50 h-[3rem]" >Visit Vitual BH Academy</Button>

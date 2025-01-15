@@ -80,8 +80,8 @@ const Card = () => {
 
     return (
         <>
-            <div className='text-center mt-[7rem]'>
-                <span className='block text-gray-700 text-2xl mb-2'>Explore Course Categories</span>
+            <div className='text-center lg:mt-[4rem] mt-[4rem]'>
+                <span className='block text-gray-700 text-2xl mb-2 font-semibold'>Explore Course Categories</span>
                 <span>Courses available in 11 languages</span>
             </div>
 
