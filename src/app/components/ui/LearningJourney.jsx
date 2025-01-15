@@ -9,7 +9,7 @@ const LearningJourney = () => {
     return (
         <div className="bg-purple-50  py-16">
             <span className='block text-gray-700 text-2xl text-center mb-[80px] font-semibold'> Start your Learning Journey Today!</span>
-            <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 lg:px-0 px-3">
 
                 <div className="bg-purple-200 rounded-lg p-6 text-center shadow-lg">
                     <div className="mb-4">

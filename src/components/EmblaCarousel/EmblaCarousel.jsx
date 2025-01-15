@@ -111,7 +111,7 @@ const EmblaCarousel = (props) => {
                                 alt="Picture of the author"
                                 className="embla__slide__img"
                             />
-                            <div className='text-center text-2xl font-semibold flex justify-center mt-8 items-center'>{items.description}</div>
+                            <div className='text-center lg:text-2xl text-xl font-semibold flex justify-center mt-8 items-center'>{items.description}</div>
                         </div>
                     ))}
                 </div>
