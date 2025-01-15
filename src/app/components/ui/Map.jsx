@@ -1,11 +1,23 @@
 'use client';
 
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
-import L from 'leaflet';
+import dynamic from 'next/dynamic';
 import { useEffect, useState } from 'react';
 import 'leaflet/dist/leaflet.css';
 
+// Dynamically import Leaflet without SSR
+const MapContainer = dynamic(() => import('react-leaflet').then((mod) => mod.MapContainer), { ssr: false });
+const TileLayer = dynamic(() => import('react-leaflet').then((mod) => mod.TileLayer), { ssr: false });
+const Marker = dynamic(() => import('react-leaflet').then((mod) => mod.Marker), { ssr: false });
+const Popup = dynamic(() => import('react-leaflet').then((mod) => mod.Popup), { ssr: false });
+
+let L;
+if (typeof window !== 'undefined') {
+    L = require('leaflet'); // Require Leaflet only on the client side
+}
+
 const Map = () => {
+    const [isMounted, setIsMounted] = useState(false);
+
     const storeLocations = [
         { lat: 16.5151, lng: 80.6321, name: "MCA Vijayawada, Asian Paints, Sy-448/2, Dno: 54-11-12n, 4th Floor, Sai Odessey Building, Gurunanak Colony Road, Vijayawada - 520008" },
         { lat: 16.5062, lng: 80.6480, name: "MCA Vijayawada" },
@@ -53,21 +65,21 @@ const Map = () => {
         { lat: 22.7804, lng: 86.2000, name: "MCA Jamshedpur" },
     ];
 
-    const [isClient, setIsClient] = useState(false);
-
     useEffect(() => {
-        setIsClient(true); // Mark the component as running on the client
-        delete L.Icon.Default.prototype._getIconUrl;
-        L.Icon.Default.mergeOptions({
-            iconRetinaUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon-2x.png',
-            iconUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png',
-            shadowUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-shadow.png',
-        });
+        setIsMounted(true); // Ensure this component runs only on the client
+
+        if (L) {
+            // Setup custom icon handling for Leaflet
+            delete L.Icon.Default.prototype._getIconUrl;
+            L.Icon.Default.mergeOptions({
+                iconRetinaUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon-2x.png',
+                iconUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png',
+                shadowUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-shadow.png',
+            });
+        }
     }, []);
 
-    if (!isClient) {
-        return null; // Prevent rendering during server-side rendering
-    }
+    if (!isMounted) return null; // Prevent rendering on the server
 
     return (
         <>
