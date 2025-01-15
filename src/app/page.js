@@ -4,13 +4,15 @@ import Card from './components/ui/Card'
 import EmblaCarousel from '@/components/EmblaCarousel/EmblaCarousel'
 import Training from './components/ui/Training'
 import LearningJourney from './components/ui/LearningJourney'
+import Map from './components/ui/Map'
 
 const Home = () => {
   return (
     <>
       <Carousel />
       <Card />
-      <LearningJourney/>
+      {/* <Map /> */}
+      <LearningJourney />
       <Training />
     </>
   )

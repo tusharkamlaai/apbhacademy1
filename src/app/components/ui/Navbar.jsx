@@ -37,7 +37,7 @@ const Navbar = () => {
     }
 
     return (
-        <div className='lg:mb-[104px]'>
+        <div className='lg:mb-[104px] navbar '>
             <nav className="fixed top-0 left-0 right-0 z-50 bg-white shadow-md flex items-center justify-between flex-wrap p-4 lg:px-[50px]">
                 <div className="flex items-center flex-shrink-0 text-white mr-6">
              <Link href='/'><button type="button" > <Image src={logo} alt="" className="lg:w-[160px] w-[130px]" /></button></Link>       
