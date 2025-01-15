@@ -1,8 +1,8 @@
-'use client'
+'use client';
 
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import L from 'leaflet';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import 'leaflet/dist/leaflet.css';
 
 const Map = () => {
@@ -53,7 +53,10 @@ const Map = () => {
         { lat: 22.7804, lng: 86.2000, name: "MCA Jamshedpur" },
     ];
 
+    const [isClient, setIsClient] = useState(false);
+
     useEffect(() => {
+        setIsClient(true); // Mark the component as running on the client
         delete L.Icon.Default.prototype._getIconUrl;
         L.Icon.Default.mergeOptions({
             iconRetinaUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon-2x.png',
@@ -62,24 +65,27 @@ const Map = () => {
         });
     }, []);
 
+    if (!isClient) {
+        return null; // Prevent rendering during server-side rendering
+    }
+
     return (
         <>
-        <div className='text-center mt-[7rem]'>
-        <span className='block text-gray-700 text-2xl mb-12'>Our Presence</span>
-    </div>
-        <div className='justify-center flex py-3'>
-            <MapContainer center={[20.5937, 78.9629]} zoom={5} style={{ height: '80vh', width: '80%' }}>
-                <TileLayer
-                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                    // attribution="&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors"
-                />
-                {storeLocations.map((location, index) => (
-                    <Marker key={index} position={[location.lat, location.lng]}>
-                        <Popup>{location.name}</Popup>
-                    </Marker>
-                ))}
-            </MapContainer>
-        </div>
+            <div className='text-center mt-[7rem]'>
+                <span className='block text-gray-700 text-2xl mb-12'>Our Presence</span>
+            </div>
+            <div className='justify-center flex py-3'>
+                <MapContainer center={[20.5937, 78.9629]} zoom={5} style={{ height: '100vh', width: '80%' }}>
+                    <TileLayer
+                        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                    />
+                    {storeLocations.map((location, index) => (
+                        <Marker key={index} position={[location.lat, location.lng]}>
+                            <Popup>{location.name}</Popup>
+                        </Marker>
+                    ))}
+                </MapContainer>
+            </div>
         </>
     );
 };
