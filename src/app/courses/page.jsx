@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { Menu, X, Video, BrickWall, Users } from 'lucide-react';
 import { courses } from '../components/data/data';
-
+// name
 const PageClient = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [data, setData] = useState(courses);
