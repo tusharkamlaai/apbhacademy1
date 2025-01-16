@@ -8,8 +8,8 @@ import t4 from '../../assets/Training/t4.png';
 import t5 from '../../assets/Training/t5.png';
 
 const images = [
-    { src: t1, alt: 'Training Image 1', description: "A world of immense learning and growth" },
-    { src: t2, alt: 'Training Image 2', "description": "An academy to develop skills and provide a platform for success" },
+    { src: t2, alt: 'Training Image 1', description: "An academy to develop skills and provide a platform for success" },
+    { src: t1, alt: 'Training Image 2', "description": "A world of immense learning and growth" },
     { src: t3, alt: 'Training Image 3', description: 'Ventilated and bright classrooms for theory based session' },
     { src: t4, alt: 'Training Image 4', "description": "Inspiration zone with latest range of designs and textures" },
     { src: t5, alt: 'Training Image 5', "description": "Practical demo trainings at the practical zone" },
@@ -24,7 +24,7 @@ const Training = () => {
 
     return (
         <>
-            <div className='text-center lg:mt-[4rem] mt-[2rem]'>
+            <div className='text-center  mt-[2rem]'>
                 <span className='block text-gray-700 text-2xl mb-2 font-semibold'>Our Training</span>
             </div>
             <div className='mt-[50px] mb-5 prevent-select'>

@@ -105,23 +105,25 @@ const EmblaCarousel = (props) => {
             <div className="embla__viewport" ref={emblaRef}>
                 <div className="embla__container">
                     {slides.map((items, index) => (
-                        <div className="embla__slide" key={index}>
+                        <div key={index} className="embla__slide relative">
                             <Image
                                 src={items.src}
-                                alt="Picture of the author"
-                                className="embla__slide__img"
+                                alt={items.alt || "Slide Image"}
+                                className="embla__slide__img rounded-lg"
+                                style={{
+                                    height: "100%",
+                                }}
                             />
-                            <div className='text-center lg:text-2xl text-xl font-semibold flex justify-center mt-8 items-center'>{items.description}</div>
+                            <div className="embla__slide__description text-[13px] lg:text-[18px]">
+                                {items.description}
+                            </div>
                         </div>
+
                     ))}
                 </div>
-            </div>
 
-            <div className="embla__controls">
-                <div className="embla__buttons">
-                    <PrevButton onClick={onPrevButtonClick} disabled={prevBtnDisabled} />
-                    <NextButton onClick={onNextButtonClick} disabled={nextBtnDisabled} />
-                </div>
+            </div>
+            <div className="embla__controls mt-2">
 
                 <div className="embla__dots">
                     {scrollSnaps.map((_, index) => (
@@ -134,6 +136,13 @@ const EmblaCarousel = (props) => {
                         />
                     ))}
                 </div>
+
+                <div className="embla__buttons mt-2 ml-2">
+                    <PrevButton onClick={onPrevButtonClick} disabled={prevBtnDisabled} />
+                    <NextButton onClick={onNextButtonClick} disabled={nextBtnDisabled} />
+                </div>
+
+
             </div>
         </div>
     )

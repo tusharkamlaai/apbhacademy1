@@ -38,7 +38,7 @@ const Navbar = () => {
 
     return (
         <div className='lg:mb-[104px] navbar '>
-            <nav className="fixed z-[1000] top-0 left-0 right-0 bg-white shadow-md flex items-center justify-between flex-wrap p-4 lg:px-[50px]">
+            <nav className="fixed z-[10000] top-0 left-0 right-0 bg-white shadow-md flex items-center justify-between flex-wrap p-4 lg:px-[50px]">
                 <div className="flex items-center flex-shrink-0 text-white mr-6">
                     <Link href='/'> <Image src={logo} alt="" className="lg:w-[160px] w-[130px]" /></Link>
                 </div>
@@ -60,15 +60,15 @@ const Navbar = () => {
                                 className="block mt-4 lg:inline-block lg:mt-0 text-[#140342] hover:text-black text-[16px] mr-4"
                             >
                                 <div className="flex items-center justify-center">
-                                    <span className="mr-1">Courses</span>
-                                    <Image
+                               <Link href='/courses'><span className="mr-1">Courses</span></Link>     
+                                    {/* <Image
                                         src={isDropdownOpen ? downArrow : nextArrow}
                                         alt="Dropdown Arrow"
                                         className={isDropdownOpen ? "w-[15px]" : "w-[8px]"}
-                                    />
+                                    /> */}
                                 </div>
                             </button>
-                            {isDropdownOpen && (
+                            {/* {isDropdownOpen && (
                                 <div className="absolute z-10 mt-0 lg:mt-[42px] w-[10rem] lg:w-[20rem] bg-white border border-gray-200 shadow-lg rounded-md">
                                     <a
                                         href="#example1"
@@ -115,7 +115,7 @@ const Navbar = () => {
                                         Example 3
                                     </a>
                                 </div>
-                            )}
+                            )} */}
                             <Link href='/faq'><button className="block mt-4 lg:inline-block lg:mt-0 text-[#140342] hover:text-black text-[16px] mr-4">
                                 FAQs
                             </button></Link>

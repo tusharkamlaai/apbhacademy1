@@ -9,14 +9,15 @@ const MapContainer = dynamic(() => import('react-leaflet').then((mod) => mod.Map
 const TileLayer = dynamic(() => import('react-leaflet').then((mod) => mod.TileLayer), { ssr: false });
 const Marker = dynamic(() => import('react-leaflet').then((mod) => mod.Marker), { ssr: false });
 const Popup = dynamic(() => import('react-leaflet').then((mod) => mod.Popup), { ssr: false });
-
+const useMapEvent = dynamic(() => import('react-leaflet').then((mod) => mod.useMapEvent), { ssr: false });
 let L;
 if (typeof window !== 'undefined') {
-    L = require('leaflet'); // Require Leaflet only on the client side
+    L = require('leaflet');
 }
 
 const Map = () => {
     const [isMounted, setIsMounted] = useState(false);
+    const [isMapFocused, setIsMapFocused] = useState(false);
 
     const storeLocations = [
         { lat: 16.5151, lng: 80.6321, name: "MCA Vijayawada, Asian Paints, Sy-448/2, Dno: 54-11-12n, 4th Floor, Sai Odessey Building, Gurunanak Colony Road, Vijayawada - 520008" },
@@ -66,10 +67,9 @@ const Map = () => {
     ];
 
     useEffect(() => {
-        setIsMounted(true); // Ensure this component runs only on the client
+        setIsMounted(true);
 
         if (L) {
-            // Setup custom icon handling for Leaflet
             delete L.Icon.Default.prototype._getIconUrl;
             L.Icon.Default.mergeOptions({
                 iconRetinaUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon-2x.png',
@@ -79,7 +79,19 @@ const Map = () => {
         }
     }, []);
 
-    if (!isMounted) return null; // Prevent rendering on the server
+    if (!isMounted) return null;
+
+    const MapFocusHandler = () => {
+        useMapEvent('click', () => {
+            setIsMapFocused(true);
+        });
+
+        useMapEvent('mouseout', () => {
+            setIsMapFocused(false);
+        });
+
+        return null;
+    };
 
     return (
         <>
@@ -87,7 +99,7 @@ const Map = () => {
                 <span className='block text-gray-700 text-2xl mb-12 font-semibold'>Our Presence</span>
             </div>
             <div className='justify-center flex py-3'>
-                <MapContainer center={[20.5937, 78.9629]} zoom={5} style={{ height: '100vh', width: '80%' }}>
+                <MapContainer center={[20.5937, 78.9629]} zoom={5} className='lg:h-[70vh] lg:w-[80%]  h-[50vh] w-[80%]' scrollWheelZoom={isMapFocused}>
                     <TileLayer
                         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                     />
