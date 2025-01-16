@@ -141,8 +141,6 @@ const EmblaCarousel = (props) => {
                     <PrevButton onClick={onPrevButtonClick} disabled={prevBtnDisabled} />
                     <NextButton onClick={onNextButtonClick} disabled={nextBtnDisabled} />
                 </div>
-
-
             </div>
         </div>
     )

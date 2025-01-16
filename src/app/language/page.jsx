@@ -37,7 +37,7 @@ const page = () => {
                             <Button
                                 key={index}
                                 variant="outline"
-                                className={`w-[15rem] h-[3rem] ${item.name === selectedLanguage ? 'bg-green-200 text-black' : 'text-black'}`}
+                                className={`w-[15rem] h-[3rem] hover:bg-green-200 ${item.name === selectedLanguage ? 'bg-green-200 text-black' : 'text-black'}`}
                                 onClick={() => setSelectedLanguage(item.name)}
                             >
                                 <span>{item.name}</span>
