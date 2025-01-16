@@ -133,17 +133,17 @@
 }
 
 .embla__slide__description {
-  position: absolute;
-  bottom: 50%;
-  left: 43%;
-  transform: translate(-40%, 50%);
-  background: rgba(0, 0, 0, 0.5);
-  color: white;
-  padding: 0.8rem 1.2rem;
-  border-radius: 8px;
-  text-align: center;
-  width: 80%;
-  bottom: 50
+  position: absolute !important;
+  bottom: 50% !important;
+  left: 43% !important;
+  transform: translate(-40%, 50%) !important;
+  background: rgba(0, 0, 0, 0.5) !important;
+  color: white !important;
+  padding: 0.8rem 1.2rem !important;
+  border-radius: 8px !important;
+  text-align: center !important;
+  width: 80% !important;
+  bottom: 50 !important;
 }
 
 
