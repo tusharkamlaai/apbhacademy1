@@ -10,9 +10,9 @@ const Home = () => {
     <>
       <Carousel />
       <Card />
-      <Map />
       <LearningJourney />
       <Training />
+      <Map />
     </>
   )
 }
