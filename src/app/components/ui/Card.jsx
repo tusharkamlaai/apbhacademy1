@@ -14,6 +14,8 @@ import im7 from '../../assets/CourseCategories/CC7.png';
 import im8 from '../../assets/CourseCategories/CC8.png';
 import im9 from '../../assets/CourseCategories/CC9.png';
 import im10 from '../../assets/CourseCategories/CC10.png';
+import Link from 'next/link'
+
 
 let CardData = [
     {
@@ -114,7 +116,7 @@ const Card = () => {
                 </Carousel>
             </div>
             <div className='text-center mt-[35px] mb-5'>
-                <Button variant="outline" className="w-[15rem] bg-purple-50 h-[3rem]" >Browse All Courses</Button>
+              <Link href='/courses'> <Button variant="outline" className="w-[15rem] bg-purple-50 h-[3rem]" >Browse All Courses</Button></Link> 
             </div>
         </>
     )
