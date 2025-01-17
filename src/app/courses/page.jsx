@@ -7,11 +7,7 @@ import { courses } from '../components/data/data';
 const PageClient = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [data, setData] = useState(courses);
-    const [selectedType, setSelectedType] = useState(null);  
-
-    const closeMenu=()=>{
-        setIsOpen(false)
-    }
+    const [selectedType, setSelectedType] = useState(null);
 
     useEffect(() => {
         const handleResize = () => {
@@ -34,8 +30,8 @@ const PageClient = () => {
     };
 
     const handleSelectType = (type) => {
-        setSelectedType(type);  
-        // setIsOpen(false)
+        setSelectedType(type);
+        toggleSidebar()
     };
 
     return (
