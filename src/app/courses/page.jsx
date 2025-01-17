@@ -9,6 +9,10 @@ const PageClient = () => {
     const [data, setData] = useState(courses);
     const [selectedType, setSelectedType] = useState(null);  
 
+    const closeMenu=()=>{
+        setIsOpen(false)
+    }
+
     useEffect(() => {
         const handleResize = () => {
             if (window.innerWidth >= 768) {
@@ -31,6 +35,7 @@ const PageClient = () => {
 
     const handleSelectType = (type) => {
         setSelectedType(type);  
+        setIsOpen(false)
     };
 
     return (
@@ -60,7 +65,7 @@ const PageClient = () => {
             <div className={`flex-1 mt-[6.5rem] ${isOpen ? 'md:ml-64' : ''} transition-margin`}>
                 <div className="flex gap-5">
                     <button className="text-xl md:hidden ml-[40px]" onClick={toggleSidebar}><Menu /></button>
-                    <span className='lg:hidden'>Courses List</span>
+                    <span className='lg:hidden md:hidden'>Courses List</span>
                 </div>
                 <div className="p-5">
                     <div className='text-center'>

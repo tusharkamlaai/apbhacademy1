@@ -19,6 +19,11 @@ const Navbar = () => {
     const router = useRouter()
     const [menuOpen, setMenuOpen] = useState(false);
 
+
+    const handleLinkClick = () => {
+        setMenuOpen(false);
+    };
+
     useEffect(() => {
         const handleClickOutside = (event) => {
             if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -60,7 +65,7 @@ const Navbar = () => {
                                 className="block mt-4 lg:inline-block lg:mt-0 text-[#140342] hover:text-black text-[16px] mr-4"
                             >
                                 <div className="flex items-center justify-center">
-                               <Link href='/courses'><span className="mr-1">Courses</span></Link>     
+                                    <Link href='/courses'><span className="mr-1" onClick={handleLinkClick}>Courses</span></Link>
                                     {/* <Image
                                         src={isDropdownOpen ? downArrow : nextArrow}
                                         alt="Dropdown Arrow"
@@ -116,18 +121,19 @@ const Navbar = () => {
                                     </a>
                                 </div>
                             )} */}
-                            <Link href='/faq'><button className="block mt-4 lg:inline-block lg:mt-0 text-[#140342] hover:text-black text-[16px] mr-4">
-                                FAQs
-                            </button></Link>
+                            <div className="block mt-4 lg:inline-block lg:mt-0 text-[#140342] hover:text-black text-[16px] mr-4">
+                                <Link href='/faq' onClick={handleLinkClick}> FAQs</Link>
+                            </div>
 
                         </div>
                         <Link
+                        onClick={handleLinkClick}
                             href="/blog"
                             className="block mt-4 lg:inline-block lg:mt-0 text-[#140342] hover:text-black text-[16px]"
                         >
                             Blog
                         </Link>
-                        <Link href='/auth/login'>  <button variant="outline" className="block lg:hidden mt-4 px-6 py-3  bg-purple-50 h-[3rem] ">
+                        <Link onClick={handleLinkClick} href='/auth/login'>  <button variant="outline" className="block lg:hidden mt-4 px-6 py-3  bg-purple-50 h-[3rem] ">
                             Login
                         </button></Link>
                     </div>

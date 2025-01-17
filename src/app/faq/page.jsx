@@ -1,61 +1,93 @@
 'use client'
 
-import { useState } from "react";
-import { ChevronDown } from "lucide-react";
+import React, { useState } from "react";
 
+const accordionData = [
+    {
+        "question": "What kinds of courses does this website offer?",
+        "answer": "Asian Paints Colour Academy has curated each and every course with the intent of developing the skills of our painters, and contractors. We have a wide range of courses ranging from textures, waterproofing, wood finishes, mechanisation, to name a few. The aim of the courses is to make the participants familiar with the products and the associated application processes."
+    },
+    {
+        "question": "What is different about the content on this website? There are many video-based learning websites.",
+        "answer": [
+            "Each course is curated as per your requirement, everything that is necessary for you to understand about the field, the application procedures, and products involved.",
+            "After you finish a course, you have the opportunity to self-assess through simple, yet effective assessment."
+        ]
+    },
+    {
+        "question": "Can I access this at anytime?",
+        "answer":
+            "Absolutely! As long as you're registered on the portal, you can access any content on apcolouracademy.in at any time",
 
-const items = [
-    {
-        title: "What is Tailwind CSS?",
-        content:
-            "Tailwind CSS is a utility-first CSS framework for rapidly building custom user interfaces.",
     },
     {
-        title: "How does Next.js work?",
-        content:
-            "Next.js is a React framework that enables functionality like server-side rendering and static site generation.",
+        "question": "Is there any subscription charge?",
+        "answer":
+            "Absolutely not! We care about your learning and that's the priority.",
+
     },
     {
-        title: "What makes this accordion premium?",
-        content:
-            "This accordion has smooth animations, is accessible, and looks great out of the box with Tailwind CSS.",
-    },
+        "question": "Will I get a certificate after I pass an assessment?",
+        "answer":
+            "Each course comprises of a set of videos. Once you watch all the videos of a course, you can take the assessment test. On passing the assessment of a course, you will get a certificate which can be downloaded. You can finish as many courses as you like and take their respective assessments.",
+
+    }
 ];
 
-const Accordion = () => {
+const PremiumAccordion = () => {
     const [openIndex, setOpenIndex] = useState(null);
 
-    const toggle = (index) => {
+    const handleToggle = (index) => {
         setOpenIndex(openIndex === index ? null : index);
     };
 
     return (
-        <div className="max-w-3xl mx-auto p-6">
-            {items.map((item, index) => (
-                <div
-                    key={index}
-                    className="border-b border-gray-300 last:border-none"
-                >
-                    <button
-                        onClick={() => toggle(index)}
-                        className="flex items-center justify-between w-full py-4 text-left text-lg font-medium text-gray-800 hover:text-indigo-500 focus:outline-none"
-                    >
-                        <span>{item.title}</span>
-                        <ChevronDown
-                            className={`w-6 h-6 transform transition-transform ${openIndex === index ? "rotate-180" : ""
-                                }`}
-                        />
-                    </button>
-                    <div
-                        className={`overflow-hidden transition-max-height duration-500 ${openIndex === index ? "max-h-screen" : "max-h-0"
-                            }`}
-                    >
-                        <div className="py-4 text-gray-600">{item.content}</div>
+        <div className="h-[100vh] bg-purple-50">
+            <div className='text-center mt-[6rem] py-5'>
+                <span className='block text-gray-700 text-2xl mb-2 font-semibold'>Frequently Asked Questions.</span>
+            </div>
+            <div className="lg:w-[80%] w-[90%] mx-auto mt-6 bg-white border border-gray-200 rounded-lg shadow-lg">
+                {accordionData.map((item, index) => (
+                    <div key={index} className="border-b border-gray-300">
+                        <button
+                            className="w-full flex justify-between items-center py-4 px-6 bg-white"
+                            onClick={() => handleToggle(index)}
+                        >
+                            <span className="text-lg font-semibold text-gray-800">{item.question}</span>
+                            <svg
+                                className={`w-5 h-5 text-gray-600 transform transition-transform ${openIndex === index ? "rotate-180" : ""
+                                    }`}
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    strokeWidth={2}
+                                    d="M19 9l-7 7-7-7"
+                                />
+                            </svg>
+                        </button>
+                        {openIndex === index && (
+                            <div className="px-6 py-4 bg-gray-50">
+                                {Array.isArray(item.answer) ? (
+                                    <ul className="list-disc list-inside text-gray-700">
+                                        {item.answer.map((point, idx) => (
+                                            <li key={idx}>{point}</li>
+                                        ))}
+                                    </ul>
+                                ) : (
+                                    <p className="text-gray-700">{item.answer}</p>
+                                )}
+                            </div>
+                        )}
                     </div>
-                </div>
-            ))}
+                ))}
+            </div>
         </div>
     );
 };
 
-export default Accordion;
+export default PremiumAccordion;

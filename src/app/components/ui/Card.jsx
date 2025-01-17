@@ -116,7 +116,7 @@ const Card = () => {
                 </Carousel>
             </div>
             <div className='text-center mt-[35px] mb-5'>
-              <Link href='/courses'> <Button variant="outline" className="w-[15rem] bg-purple-50 h-[3rem]" >Browse All Courses</Button></Link> 
+                <Link href='/courses'> <Button variant="outline" className="w-[15rem] bg-purple-50 h-[3rem]" >Browse All Courses</Button></Link>
             </div>
         </>
     )
