@@ -127,7 +127,7 @@ const Navbar = () => {
 
                         </div>
                         <Link
-                        onClick={handleLinkClick}
+                            onClick={handleLinkClick}
                             href="/blog"
                             className="block mt-4 lg:inline-block lg:mt-0 text-[#140342] hover:text-black text-[16px]"
                         >
@@ -151,6 +151,7 @@ const Navbar = () => {
                         </button> */}
 
                         <Link href='/auth/login'> <Button variant="outline" className=" bg-purple-50 h-[3rem]" >Login</Button></Link>
+                        <Link href='/profile'> <Button variant="outline" className=" bg-purple-50 h-[3rem]" >Profile</Button></Link>
                     </div>
                 </div>
             </nav>
