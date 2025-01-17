@@ -35,7 +35,7 @@ const PageClient = () => {
 
     const handleSelectType = (type) => {
         setSelectedType(type);  
-        setIsOpen(false)
+        // setIsOpen(false)
     };
 
     return (
